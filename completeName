@@ -1,0 +1,12 @@
+
+<html>
+<head>
+<title>a website about trains</title>
+<script src='script.js'></script>
+<style>
+<!--style only-->
+body{
+}
+<body>
+</body>
+background-image:<img src='https://unsplash.com/photos/KXg3p2PBHH4/download'alt='' width='400' height='400'><img src='https://unsplash.com/photos/8eId7mS_FCY/download'alt='' width='400' height='400'><img src='https://unsplash.com/photos/NkvDQJaFrYc/download'alt='' width='400' height='400'>

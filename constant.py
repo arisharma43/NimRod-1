@@ -1,5 +1,5 @@
 
-ENGINE = "curie-instruct-beta"
+ENGINE = "davinci-instruct-beta"
 BEST_OF = 1
 LOGPROBS = 10
 FREQUENCY_PENALTY = 0.7

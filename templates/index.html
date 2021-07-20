@@ -9,7 +9,7 @@
 
     <!-- Load external CSS styles -->
     <!--<link rel="stylesheet" href="file:///Users/anthony/Documents/py-1/css/style.css">-->
-    <style>
+    <style type="text/css">
         body {
             font: Timesnewroman, Sans-Serif;
             background-color: rgb(114, 216, 114);
@@ -25,6 +25,7 @@
             overflow: hidden;
             position: sticky;
 
+
         }
 
 
@@ -37,7 +38,8 @@
         }
 
         li a:hover {
-            background-color: rgba(255, 255, 255, 0.25);
+            background-color: rgba(255, 255, 255, 0.5);
+            color: black;
         }
     </style>
 
@@ -49,8 +51,8 @@
 <body>
     <div id="Home">
         <ul id="right_list">
-            <li style="float:left"><a href='/templates/index.html'><img style="top:0" src='/favicon/nricon.png' width='100'
-                        height='100'> </a></li>
+            <li style="float:left"><a href='/templates/index.html'><img style="top:0" src='/favicon/nricon.png'
+                        width='100' height='100'> </a></li>
             <li style="float:left"><a href='/templates/contact.html'>Contact Us</a></li>
             <li style="float:right"><a href='/templates/pricing.html'>Pricing</a></li>
             <li style="float:right"><a href='/templates/mission.html'>Our Mission</a></li>
@@ -61,33 +63,30 @@
 
 
         <p>Generate a Website With Just a Sentence</p><br>
-        <form method="POST" action="/" target="_blank">
+        <form method="POST" action="/">
             <input name="user_input">
             <input type="submit" id="button">
-            <a href="/"><button>Visit Your Website In A New Tab</button></a>
         </form>
     </div>
     <br>
-    <footer>
-        <a target="_blank" href="https://twitter.com/home?lang=en"><img src='/favicon/2.png' width='50' height='50'></a>
-        <a target="_blank" href="https://twitter.com/nimrod576"><img src='/favicon/1.png' width='50' height='50'></a>
-        <p style="font-size:10px; float:bottom"> Nimrod 2021 </p>
-    </footer>
 
-   Unsplash:
+    <!---Unsplash:
     <br />
     {{unsplash_results}}
     <br />
-   
+   --->
     Open AI:
-    <br />
-    <iframe width='800px' hieght='800px' srcdoc=' {{unsplash_results}}'>
-    </iframe>
     {{api_response|safe}}
-    <!---<iframe src="file//Users/anthony/Documents/py-1/output.html" height="200" width="300" title="Iframe Example"></iframe>-->
+    <br />
+    <iframe width='1570px' height='1000px' src="/output.html">
+    </iframe>
+
+    <!-- <iframe src="file//Users/anthony/Documents/py-1/output.html" height="200" width="300" title="Iframe Example"></iframe> -->
+    <footer>
+        <a target="_blank" href=""><img src='/favicon/2.png' width='50' height='50'></a>
+        <a target="_blank" href="https://twitter.com/nimrod576"><img src='/favicon/1.png' width='50' height='50'></a>
+        <p style="font-size:10px; float:bottom"> Nimrod 2021 </p>
+    </footer>
 </body>
-
-
-
 
 </html>

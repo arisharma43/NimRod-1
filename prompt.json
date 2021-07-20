@@ -17,7 +17,57 @@
     },
     {
         "prompt": "<prompt text>", 
-        "completion": "<ideal generated text>"
+        "completion": "<html>
+
+        <head>
+            <title>A website about a pizza shop</title>
+            <script src='script.js'></script>
+            <style type="text/css">
+                body {
+                    background-color: pink;
+                }
+            </style>
+        </head>
+        
+        <body bgcolor="black">
+            <h1>
+                We sell pizza!
+            </h1>
+        
+            <nav>
+            </nav>
+            <nav id="nav">
+                <footer>
+                    <footertype=navtype>
+                    </footertype=navtype>
+                    <table summary="sumary of forms" type="table">
+                        <form a="" label+'for="" sandwich="" shop'="" type+'select'"="">
+                            <tr align="center" valign="top">
+                                <td align="right" valign="top">
+                                    Choose a sandwich from the pull-down menu
+                                </td>
+                                <td ?align="left?'/" valign="top">
+                                </td>
+                            </tr>
+                            <!--The following is written in navtype-->
+                            <!--the end of navtype-->
+                            <!--vbululavfmg -->
+                            Igliberry {} Tomattiadjs {} Mi]]]ñozi [] Salads { 3 } Sandwiches [ { Iglider ]} ] Drinks {: Best }:}
+                            {:}
+                            {}}}};}:} Beer Sliders }; Hamburgettes {};]} Broccoli {} ;}{{;} Burger;}}}}} :};}:};};:{ }} };]:];
+                            Soup
+                            ({C}{E}{L) }:{H}:},},I{LLO;};;;;;;;;;;,,, OPP [] BURGER {} Pizza [] Pasta [ ] Fries [] Burgets [];
+                            Of
+                            these menu items, what would you like?
+                        </form>
+                    </table>
+                </footer>
+            </nav>background-image:<img src='https://unsplash.com/photos/jniSTizOp40/download' alt='' width='400'
+                height='400'><img src='https://unsplash.com/photos/n-7vWTWyC2A/download' alt='' width='400' height='400'><img
+                src='https://unsplash.com/photos/Lphm_eo3EFk/download' alt='' width='400' height='400'>
+        </body>
+        
+        </html>"
     },
     {
         "prompt": "<prompt text>", 

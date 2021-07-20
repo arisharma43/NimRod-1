@@ -1,7 +1,13 @@
 
-from flask import Flask, render_template, request, send_from_directory
+from flask import Flask, redirect, render_template, request, send_from_directory
 import open_ai
 import unsplash
+import tup
+from bs4 import BeautifulSoup
+import mysql_connection
+import uns
+import convert
+import os
 
 app = Flask(__name__, static_url_path='')
 
@@ -25,11 +31,15 @@ def send_favicon(path):
 def send_unsplashy(path):
     return send_from_directory('unsplashy', path)
 
+@app.route('/output/<path:path>')
+def send_output(path):
+    return send_from_directory('/output', path)
 
 @app.route('/', methods=['GET', 'POST'])
 def root():
     api_response = ""
     unsplash_result = ""
+    result=""
     if request.method == 'POST':
         user_input = request.form.get('user_input')
 
@@ -41,11 +51,18 @@ def root():
         id2 = unsplash_result[1]
         id3 = unsplash_result[2]
 
-        api_response=api_response+"background-image:<img src='https://unsplash.com/photos/" + id1 + "'alt='' width='' height=''>" +"<img src='https://unsplash.com/photos/" + id2 + "'>" + "<img src='https://unsplash.com/photos/" + id3 + "'>"
-        #with open("output.html", "w", encoding='utf-8') as file:
-        #    file.write("background-image:<img src='https://unsplash.com/photos/" + id1 + "'alt='' width='' height=''>" +
-        #               "<img src='https://unsplash.com/photos/" + id2 + "'>" + "<img src='https://unsplash.com/photos/" + id3 + "'>")
+        prompt="\n<html>" + "\n<head>" +  "\n<title>" + user_input + "</title>\n" +  "<script src='script.js'></script>\n"  + "<style>\n" + "<!--style only-->\n" + "body{\n"
+        response=tup.convertTuple(api_response)
+        prompt=tup.convertTuple(prompt)
+        soup=BeautifulSoup(response, "html.parser")
+        
+        #mysql_connection.save_data(user_input, response)
+        # save_path='/output'
+        # file_name="/output.html"
+        # completeName = os.path.join(save_path, file_name)
+        result=prompt+soup.prettify()+"background-image:<img src='https://unsplash.com/photos/" + id1 + "/download'alt='' width='400' height='400'>" +"<img src='https://unsplash.com/photos/" + id2 + "/download'alt='' width='400' height='400'>" + "<img src='https://unsplash.com/photos/" + id3 + "/download'alt='' width='400' height='400'>"
+        with open("output.html", "w") as file:
+            # file = open(completeName, "w")
+            file.write(result)
 
-     # return '''{}'''.format(api_response)
-
-    return render_template('index.html', api_response=api_response, unsplash_results=unsplash_result)
+    return render_template('index.html', api_response=result, unsplash_results=unsplash_result)
