@@ -7,7 +7,7 @@ from bs4 import BeautifulSoup
 import mysql_connection
 import uns
 import convert
-import os
+import os.path
 
 app = Flask(__name__, static_url_path='')
 
@@ -33,7 +33,7 @@ def send_unsplashy(path):
 
 @app.route('/output/<path:path>')
 def send_output(path):
-    return send_from_directory('/output', path)
+    return send_from_directory('output', path)
 
 @app.route('/', methods=['GET', 'POST'])
 def root():
@@ -42,6 +42,8 @@ def root():
     result=""
     if request.method == 'POST':
         user_input = request.form.get('user_input')
+        #moved code below to main.py to check in terminal but we will still use flask_server for the actual website
+        #user_input=input("Describe what you want your website to look like")
 
         api_response = open_ai.openai_request(user_input)
 
@@ -57,11 +59,11 @@ def root():
         soup=BeautifulSoup(response, "html.parser")
         
         #mysql_connection.save_data(user_input, response)
-        # save_path='/output'
-        # file_name="/output.html"
-        # completeName = os.path.join(save_path, file_name)
-        result=prompt+soup.prettify()+"background-image:<img src='https://unsplash.com/photos/" + id1 + "/download'alt='' width='400' height='400'>" +"<img src='https://unsplash.com/photos/" + id2 + "/download'alt='' width='400' height='400'>" + "<img src='https://unsplash.com/photos/" + id3 + "/download'alt='' width='400' height='400'>"
-        with open("output.html", "w") as file:
+        save_path='/output'
+        file_name="/output.html"
+        completeName = os.path.join(save_path, file_name)
+        result=prompt+soup.prettify()+ "background-image:<img src='https://unsplash.com/photos/" + id1 + "/download'alt='' width='400' height='400'>" +"<img src='https://unsplash.com/photos/" + id2 + "/download'alt='' width='400' height='400'>" + "<img src='https://unsplash.com/photos/" + id3 + "/download'alt='' width='400' height='400'>" + "<style>" + "</style>" + "<script>" + "</script>" 
+        with open(completeName, "w") as file:
             # file = open(completeName, "w")
             file.write(result)
 

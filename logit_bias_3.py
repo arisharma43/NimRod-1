@@ -1,7 +1,7 @@
 logit_bias_3={
    #positive
    16539: 5, #button
-   9600: 3, #img
+   
    5898: 5, #foot
    15414: 5, #input
    11840: 5, #hr
@@ -13,6 +13,9 @@ logit_bias_3={
    377: 5, #ul
    28341: 5, #nav
    #negative
+   7635: -100, #style
+   3918: -100, #"space"style
+   12048: -100, #script
    6494: -100, #html
    4226: -100, #"space" script
    220: -99, #"space"
