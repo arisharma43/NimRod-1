@@ -53,18 +53,19 @@ def root():
         id2 = unsplash_result[1]
         id3 = unsplash_result[2]
 
-        prompt="\n<html>" + "\n<head>" +  "\n<title>" + user_input + "</title>\n" +  "<script src='script.js'></script>\n"  + "<style>\n" + "<!--style only-->\n" + "body{\n"
-        response=tup.convertTuple(api_response)
-        prompt=tup.convertTuple(prompt)
-        soup=BeautifulSoup(response, "html.parser")
+        prompt="\n<html>" + "\n<head>" +  "\n<title>" + user_input + "</title>\n" + "\n</head>" + "\n<body" + "style='background-image:src(" + "'https://unsplash.com/photos/" + id1 + "/download'" + ")>"
+        #response=tup.convertTuple(api_response)
+        #prompt=tup.convertTuple(prompt)
+        
         
         #mysql_connection.save_data(user_input, response)
-        save_path='/output'
-        file_name="/output.html"
-        completeName = os.path.join(save_path, file_name)
-        result=prompt+soup.prettify()+ "background-image:<img src='https://unsplash.com/photos/" + id1 + "/download'alt='' width='400' height='400'>" +"<img src='https://unsplash.com/photos/" + id2 + "/download'alt='' width='400' height='400'>" + "<img src='https://unsplash.com/photos/" + id3 + "/download'alt='' width='400' height='400'>" + "<style>" + "</style>" + "<script>" + "</script>" 
-        with open(completeName, "w") as file:
-            # file = open(completeName, "w")
-            file.write(result)
+        #save_path='output'
+        #file_name="output.html"
+        #completeName = os.path.join(save_path, file_name)
+        result=prompt+api_response+ "<img src='https://unsplash.com/photos/" + id1 + "/download'alt='' width='400' height='400'>" +"<img src='https://unsplash.com/photos/" + id2 + "/download'alt='' width='400' height='400'>" + "<img src='https://unsplash.com/photos/" + id3 + "/download'alt='' width='400' height='400'>" + "</body>" + "<style>" + "</style>" + "<script>" + "</script>" 
+        soup=BeautifulSoup(result, "html.parser")
+        with open("output/output.html", "w+") as file:
+            #file = open(completeName, "w")
+            file.write(soup.prettify())
 
     return render_template('index.html', api_response=result, unsplash_results=unsplash_result)
